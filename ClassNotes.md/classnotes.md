@@ -354,4 +354,136 @@ int main() {
 
     cout << "Maximum value = " << maxValue << endl;
     return 0;
-}
+}. 
+
+
+
+
+Date  13 Aug 2026 
+
+Q1:- WAP to create Airline Reservation System Which includes the data member as passengers id, name, flight Number, Destination , Ticket Fare and Booking Status , includes the functionality of add passenger details, book ticket, cancel ticket and display the ticket fare.
+
+
+#include <iostream>
+#include <string>
+using namespace std;
+
+class AirlineReservation {
+private:
+    int passengerId;
+    string name;
+    string flightNumber;
+    string destination;
+    double ticketFare;
+    string bookingStatus;
+
+public:
+    // Function to add passenger details
+    void addPassengerDetails() {
+        cout << "Enter Passenger ID: ";
+        cin >> passengerId;
+
+        cin.ignore();
+        cout << "Enter Passenger Name: ";
+        getline(cin, name);
+
+        cout << "Enter Flight Number: ";
+        cin >> flightNumber;
+
+        cin.ignore();
+        cout << "Enter Destination: ";
+        getline(cin, destination);
+
+        cout << "Enter Ticket Fare: ";
+        cin >> ticketFare;
+
+        bookingStatus = "Not Booked";
+
+        cout << "\nPassenger details added successfully!\n";
+    }
+
+    // Function to book ticket
+    void bookTicket() {
+        if (bookingStatus == "Booked") {
+            cout << "\nTicket is already booked.\n";
+        } else {
+            bookingStatus = "Booked";
+            cout << "\nTicket booked successfully!\n";
+        }
+    }
+
+    // Function to cancel ticket
+    void cancelTicket() {
+        if (bookingStatus == "Booked") {
+            bookingStatus = "Cancelled";
+            cout << "\nTicket cancelled successfully!\n";
+        } else {
+            cout << "\nNo booked ticket to cancel.\n";
+        }
+    }
+
+    // Function to display ticket fare
+    void displayTicketFare() {
+        cout << "\nTicket Fare: Rs. " << ticketFare << endl;
+    }
+
+    // Function to display passenger details
+    void displayDetails() {
+        cout << "\n----- Passenger Details -----\n";
+        cout << "Passenger ID   : " << passengerId << endl;
+        cout << "Passenger Name : " << name << endl;
+        cout << "Flight Number  : " << flightNumber << endl;
+        cout << "Destination    : " << destination << endl;
+        cout << "Ticket Fare    : Rs. " << ticketFare << endl;
+        cout << "Booking Status : " << bookingStatus << endl;
+    }
+};
+
+int main() {
+    AirlineReservation passenger;
+    int choice;
+
+    do {
+        cout << "\n===== AIRLINE RESERVATION SYSTEM =====\n";
+        cout << "1. Add Passenger Details\n";
+        cout << "2. Book Ticket\n";
+        cout << "3. Cancel Ticket\n";
+        cout << "4. Display Ticket Fare\n";
+        cout << "5. Display Passenger Details\n";
+        cout << "6. Exit\n";
+        cout << "Enter your choice: ";
+        cin >> choice;
+
+        switch (choice) {
+            case 1:
+                passenger.addPassengerDetails();
+                break;
+
+            case 2:
+                passenger.bookTicket();
+                break;
+
+            case 3:
+                passenger.cancelTicket();
+                break;
+
+            case 4:
+                passenger.displayTicketFare();
+                break;
+
+            case 5:
+                passenger.displayDetails();
+                break;
+
+            case 6:
+                cout << "\nThank you for using Airline Reservation System!\n";
+                break;
+
+            default:
+                cout << "\nInvalid choice! Please try again.\n";
+        }
+
+    } while (choice != 6);
+
+    return 0;
+}   
