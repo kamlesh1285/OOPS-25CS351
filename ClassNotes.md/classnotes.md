@@ -487,3 +487,247 @@ int main() {
 
     return 0;
 }   
+
+
+17 Aug 2026 
+
+Q1: WAP to implement the student record (class) feature (Name , Roll and Class) 
+
+
+#include <iostream>
+#include <string>
+using namespace std;
+
+class StudentRecord {
+private:
+    string name;
+    int roll;
+    string className;
+
+public:
+    void input() {
+        cout << "Enter student name: ";
+        getline(cin, name);
+
+        cout << "Enter roll number: ";
+        cin >> roll;
+        cin.ignore();
+
+        cout << "Enter class: ";
+        getline(cin, className);
+    }
+
+    void display() const {
+        cout << "\nStudent Record\n";
+        cout << "Name  : " << name << '\n';
+        cout << "Roll  : " << roll << '\n';
+        cout << "Class : " << className << '\n';
+    }
+};
+
+int main() {
+    StudentRecord student;
+
+    student.input();
+    student.display();
+
+    return 0;
+}
+
+#include <iostream>
+#include <string>
+using namespace std;
+
+class StudentRecord {
+private:
+    string name;
+    int roll;
+    string className;
+
+public:
+    void input() {
+        cout<<"Enter Student Name:";
+        getline(cin, name);
+
+        cout<<"Enter Roll:";
+        getline(cin, roll);
+
+        cout<<"Enter Class Name:";
+        getline(cin, className);
+
+    }
+
+    void display const {
+        cout<<"\nStudent Record\n";
+        cout<<"Name :"<<name<<"\n";
+        cout<<>>
+    }
+
+}
+
+
+                                                    18 Aug 2026
+Key Features of OOPS:
+    - Class
+    _ Object
+    _ Inheritance 
+    _ Polymorphism 
+    _ Abstraction 
+    _ Encapsulation 
+
+
+
+
+
+
+Class:- It is a blue print of creating an object like a templete. 
+        Class in C++ is user Define Data type That act as a blueprint for creating an object.
+        It groups related variables (called data members) and functions (called member function) into a single unit.
+
+object:- Instance of a class with data and fn
+
+Encapsulation:- It is the process of bundling data and method that operate on data into a single unit.
+
+Inheritance:- Allows one class to inharet bhevious and it propertis of onother class
+
+Polymorphism. :- One fn or method behave differently based on input
+
+Abstraction:- Hides the complex details and shows only necessary features.
+
+
+Example:- 
+    class Student {
+    public:
+        string name
+        int age 
+        void display() {
+            cout<<"Name"<<name<<"\n";
+            }
+
+    }
+
+
+19 AUG 2026 
+
+Q:- WAP to create a class and find the area of rectangle
+
+#include <iostream>
+using namespace std;
+
+class Rectangle {
+private:
+    float length;
+    float breadth;
+
+public:
+    void getData() {
+        cout << "Enter length: ";
+        cin >> length;
+
+        cout << "Enter breadth: ";
+        cin >> breadth;
+    }
+
+    float area() {
+        return length * breadth;
+    }
+
+    void displayArea() {
+        cout << "Area of rectangle = " << area() << endl;
+    }
+};
+
+int main() {
+    Rectangle rectangle;
+
+    rectangle.getData();
+    rectangle.displayArea();
+
+    return 0;
+}
+
+
+
+20 AUG 2026  
+
+
+Access Specfier :-
+    * private 
+    * Protected 
+    * Public  
+
+Eg:- 
+    Class Demo{
+        private: int a;
+        protected: int b;
+        public: 
+            int c;
+            void set() 
+            void show() {
+                cout<<a<<b<<c<<endl;
+
+            }
+    };
+
+Q:- WAP to display the marks of the students where the marks will be private and set Marks in public.
+
+#include <iostream>
+using namespace std;
+
+class Marks {
+private:
+    int marks;
+
+public:
+    void setMarks() {
+        cout << "Enter marks: ";
+        cin >> marks;
+    }
+
+    void displayMarks() {
+        cout << "Entered Marks: " << marks << endl;
+    }
+};
+
+int main() {
+    Marks M;
+
+    M.setMarks();
+    M.displayMarks();
+
+    return 0;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
