@@ -327,7 +327,7 @@ int main() {
 }
 
 
-Q2:- Write a program to find the maximum value from the different inuput provided by the users.
+Q2:- Write a program to find the maximum value from the different input provided by the users.
 
 Sol:- 
 
@@ -534,36 +534,7 @@ int main() {
     return 0;
 }
 
-#include <iostream>
-#include <string>
-using namespace std;
 
-class StudentRecord {
-private:
-    string name;
-    int roll;
-    string className;
-
-public:
-    void input() {
-        cout<<"Enter Student Name:";
-        getline(cin, name);
-
-        cout<<"Enter Roll:";
-        getline(cin, roll);
-
-        cout<<"Enter Class Name:";
-        getline(cin, className);
-
-    }
-
-    void display const {
-        cout<<"\nStudent Record\n";
-        cout<<"Name :"<<name<<"\n";
-        cout<<>>
-    }
-
-}
 
 
                                                     18 Aug 2026
@@ -588,7 +559,7 @@ object:- Instance of a class with data and fn
 
 Encapsulation:- It is the process of bundling data and method that operate on data into a single unit.
 
-Inheritance:- Allows one class to inharet bhevious and it propertis of onother class
+Inheritance:- Allows one class to inheret bheviour and propertis of another class
 
 Polymorphism. :- One fn or method behave differently based on input
 
@@ -699,6 +670,87 @@ int main() {
 }
 
 
+                                                21 AUG 2026
+
+
+Q:-
+ WAP  to demostrate public, private and protected access specifier .
+
+#include <iostream>
+using namespace std;
+
+class Parent {
+public:
+    int publicData = 10;
+
+protected:
+    int protectedData = 20;
+
+private:
+    int privateData = 30;
+
+public:
+    void showPrivateData() {
+        cout << "Private data: " << privateData << endl;
+    }
+};
+
+class Child : public Parent {
+public:
+    void showProtectedData() {
+        cout << "Protected data: " << protectedData << endl;
+    }
+};
+
+int main() {
+    Parent parent;
+    Child child;
+
+    // Public member: accessible outside the class.
+    cout << "Public data: " << parent.publicData << endl;
+
+    // Protected member: accessible through a derived-class function.
+    child.showProtectedData();
+
+    // Private member: accessible only through a public member function
+    // of its own class.
+    parent.showPrivateData();
+
+    // The following statements would cause errors:
+    // cout << parent.privateData << endl;
+    // cout << parent.protectedData << endl;
+
+    return 0;
+}
+
+
+                            Friend Class
+
+A fiend class is a special class that can be access private and protected member of another class ( one class can be friend of another class) 
+
+
+Friend Function :- A friend fn is a special fn that can access private and protected members. A friend fn not a member       of class but can be access the object of that class.
+    A friend can be a :
+        * global fn
+        * 
+        It is define outside the class , I does not use pointer, It like a normal fn.
+
+EX:- 
+    class Box {
+    private:
+        int length = 10;
+        Friend voidShow(Box) 
+
+    };
+
+
+Diff b/w Friend Fn 
+
+* a friend fn can not be member of class             * 
+* It is declered using friend fn                     * It is implemented using the base class and drive class .
+* It can access private and protected member of a.   * A drive class can be access inherated public and protected membe
+    class 
+* It is mainly used for special purpose              * It is mainly use for code reuseablity.
 
 
 
