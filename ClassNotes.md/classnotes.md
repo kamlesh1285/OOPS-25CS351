@@ -756,6 +756,102 @@ Diff b/w Friend Fn
 
 
 
+25 AUG 2026 
+
+CLASS :
+    - Data Members 
+    * methods of Function 
+
+
+
+Q1:- WAP to create a student class with the member function display, define inside the class.
+
+Q2:- WAP to create a student class with the member function display, define outside the class using scope Resulation operator.
+
+Q3:- WAP to create a calculator class with a inline member function add, Define outside the class.
+
+
+Sol1:- 
+
+#include <iostream>
+using namespace std;
+
+class Student {
+public:
+    void display() {
+        cout << "This is the Student class." << endl;
+    }
+};
+
+int main() {
+    Student student;
+
+    student.display();
+
+    return 0;
+}
+
+
+Sol2:- 
+#include <iostream>
+using namespace std;
+
+class Student {
+public:
+    void display();   // Function declaration
+};
+
+// Function definition outside the class
+// using the scope resolution operator ::
+
+void Student::display() {
+    cout << "This is the Student class." << endl;
+}
+
+int main() {
+    Student student;
+
+    student.display();
+
+    return 0;
+}
+
+Sol3:- 
+
+#include <iostream>
+using namespace std;
+
+class Calculator {
+public:
+    inline int add(int a, int b);
+};
+
+// Inline member function defined outside the class
+inline int Calculator::add(int a, int b) {
+    return a + b;
+}
+
+int main() {
+    Calculator calculator;
+
+    int num1, num2;
+
+    cout << "Enter two numbers: ";
+    cin >> num1 >> num2;
+
+    cout << "Sum = " << calculator.add(num1, num2) << endl;
+
+    return 0;
+}
+
+
+
+
+
+
+
+
+
 
 
 
