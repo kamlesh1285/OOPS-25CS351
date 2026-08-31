@@ -845,6 +845,81 @@ int main() {
 }
 
 
+31 AUG 2026   (LAB) 
+
+Q1:-WAP a C++ program with a member fn deifned inside the class 
+Q2:- WAP a C++ program to create a student class with a member fn display , define outside the class using scope resulation operator.
+Q3:- WAp to create a calculator class   with a inline member fn add define outside the class.
+
+
+Q1:
+
+#include <iostream>
+using namespace std;
+
+class Student {
+public:
+    void display() {
+        cout << "Function defined inside the class." << endl;
+    }
+};
+
+int main() {
+    Student student;
+    student.display();
+
+    return 0;
+}
+
+
+Q2:
+
+#include <iostream>
+using namespace std;
+
+class Student {
+public:
+    void display();
+};
+
+void Student::display() {
+    cout << "Function defined outside the class." << endl;
+}
+
+int main() {
+    Student student;
+    student.display();
+
+    return 0;
+}
+
+Q3:
+
+#include <iostream>
+using namespace std;
+
+class Calculator {
+public:
+    inline int add(int a, int b);
+};
+
+inline int Calculator::add(int a, int b) {
+    return a + b;
+}
+
+int main() {
+    Calculator calculator;
+    int num1 = 15, num2 = 25;
+
+    cout << "Sum = " << calculator.add(num1, num2) << endl;
+
+    return 0;
+}
+
+
+
+
+
 
 
 
