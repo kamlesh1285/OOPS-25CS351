@@ -917,13 +917,196 @@ int main() {
 }
 
 
+01 SEP 2026
+
+# Data Hiding 
+
+Q:- Design a class to represent a bank account with proper data hiding and member function for deposit and withdraw operation.
+
+
+#include <iostream>
+#include <string>
+using namespace std;
+
+class BankAccount {
+private:
+    // Hidden data members (cannot be modified directly from outside)
+    string accountNumber;
+    string accountHolder;
+    double balance;
+
+public:
+    // Constructor to initialize the bank account
+    BankAccount(string accNum, string holderName, double initialBalance) {
+        accountNumber = accNum;
+        accountHolder = holderName;
+        if (initialBalance >= 0) {
+            balance = initialBalance;
+        } else {
+            balance = 0.0;
+            cout << "Invalid initial balance. Set to 0.0\n";
+        }
+    }
+
+    // Member function to deposit money safely
+    void deposit(double amount) {
+        if (amount > 0) {
+            balance += amount;
+            cout << "Deposited: $" << amount << endl;
+        } else {
+            cout << "Deposit amount must be positive!" << endl;
+        }
+    }
+
+    // Member function to withdraw money with validation
+    void withdraw(double amount) {
+        if (amount <= 0) {
+            cout << "Withdrawal amount must be positive!" << endl;
+        } else if (amount > balance) {
+            cout << "Insufficient balance! Current balance: $" << balance << endl;
+        } else {
+            balance -= amount;
+            cout << "Withdrawn: $" << amount << endl;
+        }
+    }
+
+    // Member function to display account details
+    void displayAccount() const {
+        cout << "\n--- Account Details ---" << endl;
+        cout << "Account Number : " << accountNumber << endl;
+        cout << "Account Holder : " << accountHolder << endl;
+        cout << "Current Balance: $" << balance << endl;
+        cout << "-----------------------\n" << endl;
+    }
+};
+
+int main() {
+    // Create an account object
+    BankAccount myAccount("ACC12345", "Alice Smith", 1000.0);
+
+    myAccount.displayAccount();
+
+    // Perform deposit operation
+    myAccount.deposit(500.0);
+
+    // Perform withdrawal operations
+    myAccount.withdraw(300.0);
+    myAccount.withdraw(1500.0); // Overdraw attempt
+
+    // Display updated details
+    myAccount.displayAccount();
+
+    return 0;
+}
 
 
 
 
 
+02 SEP 2026 
 
 
+# Constructor 
+
+Q1:- WAP to create a class student and use a Constructor, display a student name and age.
+
+Q2:- WAP to create a class or use a default Constructor , to display a student name and age.
+
+Q3:- WAP to create a class student with a paramaterize Constructor , that accept the 
+student name and marks and displays them.
+
+
+Q1: Constructor to Display Name and Age
+
+#include <iostream>
+using namespace std;
+
+class Student {
+private:
+    string name;
+    int age;
+
+public:
+    Student(string n, int a) {
+        name = n;
+        age = a;
+    }
+
+    void display() {
+        cout << "Name: " << name << endl;
+        cout << "Age: " << age << endl;
+    }
+};
+
+int main() {
+    Student s1("Alice", 20);
+    s1.display();
+
+    return 0;
+}
+
+Q2: Default Constructor to Display Name and Age
+
+#include <iostream>
+using namespace std;
+
+class Student {
+private:
+    string name;
+    int age;
+
+public:
+    // Default Constructor
+    Student() {
+        name = "Unknown";
+        age = 0;
+    }
+
+    // Display function
+    void display() {
+        cout << "Name: " << name << endl;
+        cout << "Age: " << age << endl;
+    }
+};
+
+int main() {
+    Student s1; // Calls default constructor
+    s1.display();
+
+    return 0;
+}
+
+
+Q3: Parameterized Constructor to Display Name and Marks
+
+#include <iostream>
+using namespace std;
+
+class Student {
+private:
+    string name;
+    int marks;
+
+public:
+    // Parameterized Constructor
+    Student(string n, int m) {
+        name = n;
+        marks = m;
+    }
+
+    // Display function
+    void display() {
+        cout << "Name: " << name << endl;
+        cout << "Marks: " << marks << endl;
+    }
+};
+
+int main() {
+    Student s1("Bob", 95);
+    s1.display();
+
+    return 0;
+}
 
 
 
