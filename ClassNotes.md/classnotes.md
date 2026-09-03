@@ -1112,6 +1112,74 @@ int main() {
 
 
 
+Default Constructor - takes no argument and its called automatically when object is created 
+A Parametrized constructor recieves value when object is created 
+Q1:- WAP to ctrate a class and use the parameterize constructor add two number ..
+
+Q2:- wap to create a class Student and use a default constructor to display a student ..
+
+Q1:
+
+#include <iostream>
+using namespace std;
+
+class Calculator {
+private:
+    int result;
+
+public:
+    // Parameterized Constructor
+    Calculator(int a, int b) {
+        result = a + b;
+    }
+
+    // Display function
+    void display() {
+        cout << "Sum = " << result << endl;
+    }
+};
+
+int main() {
+    // Object creation calls the parameterized constructor
+    Calculator c1(10, 20);
+    c1.display();
+
+    return 0;
+}
+
+Q2:
+
+#include <iostream>
+using namespace std;
+
+class Student {
+private:
+    string name;
+    int age;
+
+public:
+    // Default Constructor
+    Student() {
+        name = "Unknown";
+        age = 0;
+    }
+
+    // Display function
+    void display() {
+        cout << "Name: " << name << endl;
+        cout << "Age: " << age << endl;
+    }
+};
+
+int main() {
+    // Object creation calls the default constructor
+    Student s1;
+    s1.display();
+
+    return 0;
+}
+
+
 
 
 
