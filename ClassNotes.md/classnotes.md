@@ -1180,6 +1180,258 @@ int main() {
 }
 
 
+07 SEP 2026 (LAB) 
+
+Q1:- Design a C++ Program to create a multiply class and use a parameterize constructor to multiply two numbers.
+Q2:- WAP to create a class rectangle and use parameterised constructor to evalute area of rectangle. 
+
+
+Q1:
+#include <iostream>
+using namespace std;
+
+class Multiply {
+private:
+    int result;
+
+public:
+    // Parameterized Constructor
+    Multiply(int a, int b) {
+        result = a * b;
+    }
+
+    // Display function
+    void display() {
+        cout << "Product = " << result << endl;
+    }
+};
+
+int main() {
+    // Object creation calls the parameterized constructor
+    Multiply m1(5, 6);
+    m1.display();
+
+    return 0;
+}
+
+
+Q2:
+#include <iostream>
+using namespace std;
+
+class Rectangle {
+private:
+    float length;
+    float breadth;
+    float area;
+
+public:
+    // Parameterized Constructor
+    Rectangle(float l, float b) {
+        length = l;
+        breadth = b;
+        area = length * breadth;
+    }
+
+    // Display function
+    void displayArea() {
+        cout << "Area of rectangle = " << area << endl;
+    }
+};
+
+int main() {
+    // Object creation calls the parameterized constructor
+    Rectangle r1(10.5, 5.0);
+    r1.displayArea();
+
+    return 0;
+}
+
+
+
+
+Q3:- Develop A program to demostrate different type of constuctors beheviour in object livecycle managment.
+
+#include <iostream>
+using namespace std;
+
+class Student {
+private:
+    string name;
+    int age;
+
+public:
+    // 1. Default Constructor
+    Student() {
+        name = "Unknown";
+        age = 0;
+        cout << "Default Constructor called for " << name << endl;
+    }
+
+    // 2. Parameterized Constructor
+    Student(string n, int a) {
+        name = n;
+        age = a;
+        cout << "Parameterized Constructor called for " << name << endl;
+    }
+
+    // 3. Copy Constructor
+    Student(const Student &other) {
+        name = other.name;
+        age = other.age;
+        cout << "Copy Constructor called for " << name << endl;
+    }
+
+    // 4. Destructor
+    ~Student() {
+        cout << "Destructor called for " << name << endl;
+    }
+
+    // Display function
+    void display() {
+        cout << "Name: " << name << ", Age: " << age << endl;
+    }
+};
+
+int main() {
+    cout << "--- Creating Objects ---" << endl;
+
+    // Calls Default Constructor
+    Student s1;
+
+    // Calls Parameterized Constructor
+    Student s2("Alice", 20);
+
+    // Calls Copy Constructor
+    Student s3 = s2;
+
+    cout << "\n--- Displaying Details ---" << endl;
+    s1.display();
+    s2.display();
+    s3.display();
+
+    cout << "\n--- End of Main (Destructors will be called) ---" << endl;
+
+    return 0;
+}
+
+
+
+
+#include <bits/stdc++.h>
+using namespace std;
+
+class Student {
+private:
+    string name;
+    int age;
+    
+public:
+    Student() {
+        name = "Kamlesh";
+        age = 20;
+        cout<<"Default Constructor: "<<name<<"\n";
+    }
+    
+    Student( string n, int a) {
+        name = n;
+        age = a;
+        cout<<"Paramertized Constructor: "<<name<<"\n";
+    }
+    
+    void display() {
+        cout<<"NAME: "<<name<<"  AGE: "<<age<<"\n";
+    }
+};
+
+int main() {
+	// your code goes here
+	
+	Student s1; 
+	s1.display();
+	
+	
+	Student s2("Kamlesh", 20);
+	s2.display();
+	
+
+}
+
+
+Q4: Implement a c++ using a friend function to illustrate shared data and controlled access.
+
+
+#include <iostream>
+#include <string>
+using namespace std;
+
+// Forward declaration
+class BankAccount;
+
+class Customer {
+private:
+    string name;
+    int customerId;
+
+public:
+    Customer(string n, int id) : name(n), customerId(id) {}
+
+    // Declare friend function
+    friend void transferFunds(Customer &sender, BankAccount &receiverAccount);
+};
+
+class BankAccount {
+private:
+    int accountNumber;
+    double balance;
+
+public:
+    BankAccount(int accNum, double initialBalance) 
+        : accountNumber(accNum), balance(initialBalance) {}
+
+    // Declare same friend function
+    friend void transferFunds(Customer &sender, BankAccount &receiverAccount);
+
+    void displayBalance() {
+        cout << "Account #" << accountNumber << " Balance: $" << balance << endl;
+    }
+};
+
+// Friend function definition (outside both classes)
+void transferFunds(Customer &sender, BankAccount &receiverAccount) {
+    cout << "\n--- Controlled Fund Transfer ---" << endl;
+    cout << "Customer: " << sender.name << " (ID: " << sender.customerId << ")" << endl;
+    
+    // Accessing private members of BankAccount
+    cout << "Current Balance: $" << receiverAccount.balance << endl;
+    
+    double amount = 500.0;
+    if (receiverAccount.balance >= amount) {
+        receiverAccount.balance -= amount;
+        cout << "Transferred: $" << amount << endl;
+        cout << "New Balance: $" << receiverAccount.balance << endl;
+    } else {
+        cout << "Insufficient funds!" << endl;
+    }
+}
+
+int main() {
+    Customer customer("Alice", 1001);
+    BankAccount account(12345, 2000.0);
+
+    cout << "Before Transfer:" << endl;
+    account.displayBalance();
+
+    // Friend function allows controlled access to private data
+    transferFunds(customer, account);
+
+    cout << "\nAfter Transfer:" << endl;
+    account.displayBalance();
+
+    return 0;
+
+}
+
 
 
 
