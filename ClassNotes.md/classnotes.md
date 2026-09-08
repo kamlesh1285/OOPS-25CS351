@@ -1433,6 +1433,109 @@ int main() {
 }
 
 
+11
+05
+
+08 SEP 2026
+
+
+# Copy Constructor 
+
+when you create a copy an object using another object of same class c++ automatically copies the values of all data members , This is known as default copying or copy constructor.
+
+ *. Syntax:
+  class Name(Const Classname &Object) 
+  {
+    //copy data 
+  }
+
+  Example:
+
+  Class Student {
+    Public:
+        int roll;
+        String name;
+
+  }
+  int main() {
+    Student S1;
+    S1.roll = 101;
+    S1.name = "Amit";
+    Student S2=S1;
+    cout<<S2.roll<<S2.name;
+  }
+
+
+  Example:
+  class Student {
+    private:
+        int roll;
+        string name;
+
+    public:
+        student(int r, string n) { // Parameterized Constructor
+            roll=r;
+            name=n;
+
+
+        }
+        Student (const Student &S1) {
+            roll = S.roll
+            name = S.name;
+        }
+  };
+
+
+  Q1:- create a class employe having id and salary . initilized the first object use a parametrrized constructor and create the second object using copy constructor. 
+
+  :-
+  #include <iostream>
+using namespace std;
+
+class Employee {
+private:
+    int id;
+    double salary;
+
+public:
+    // 1. Parameterized Constructor
+    Employee(int empId, double empSalary) {
+        id = empId;
+        salary = empSalary;
+        cout << "Parameterized Constructor called for Employee ID: " << id << endl;
+    }
+
+    // 2. Copy Constructor
+    Employee(const Employee &other) {
+        id = other.id;
+        salary = other.salary;
+        cout << "Copy Constructor called for Employee ID: " << id << endl;
+    }
+
+    // Display function
+    void display() {
+        cout << "Employee ID: " << id << ", Salary: $" << salary << endl;
+    }
+};
+
+int main() {
+    cout << "--- Creating Objects ---" << endl;
+
+    // Initialize first object using Parameterized Constructor
+    Employee emp1(101, 50000.0);
+
+    // Create second object using Copy Constructor
+    Employee emp2 = emp1;
+
+    cout << "\n--- Employee Details ---" << endl;
+    emp1.display();
+    emp2.display();
+
+    return 0;
+}
+
+
+
 
 
 
