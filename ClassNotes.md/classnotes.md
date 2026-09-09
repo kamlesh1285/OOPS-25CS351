@@ -1534,6 +1534,87 @@ int main() {
     return 0;
 }
 
+09 SEP 2026 
+
+OBJECT AS AN ARGUMENT 
+
+def:- An object can be passed to a function just like a normal variable. Object an argument means passing an object of a clas to a function as an argument.
+Object can be passed by the value of by refrence.
+Passing by refrence avoids making a copy, an object using a constant , Prevent modification of original object.
+
+
+Q1:- WAP to swap to number by using call by value .
+Q2:- WAP to swap to number by using call by reference.
+
+sol1:- 
+
+#include <iostream>
+using namespace std;
+
+// Function using Call by Value
+void swapByValue(int a, int b) {
+    int temp = a;
+    a = b;
+    b = temp;
+    cout << "Inside Function (Swapped): a = " << a << ", b = " << b << endl;
+}
+
+int main() {
+    int x = 10, y = 20;
+
+    cout << "Before Swap: x = " << x << ", y = " << y << endl;
+
+    swapByValue(x, y);
+
+    cout << "After Swap (Original): x = " << x << ", y = " << y << endl;
+
+    return 0;
+} 
+
+Sol2:- 
+#include <iostream>
+using namespace std;
+
+class Number {
+public:
+    int value;
+
+    Number(int v) : value(v) {}
+
+    void display() {
+        cout << value;
+    }
+};
+
+// Function using Call by Reference (Object as Argument)
+void swapByReference(Number &obj1, Number &obj2) {
+    int temp = obj1.value;
+    obj1.value = obj2.value;
+    obj2.value = temp;
+}
+
+int main() {
+    Number num1(100);
+    Number num2(200);
+
+    cout << "Before Swap: num1 = ";
+    num1.display();
+    cout << ", num2 = ";
+    num2.display();
+    cout << endl;
+
+    swapByReference(num1, num2);
+
+    cout << "After Swap:  num1 = ";
+    num1.display();
+    cout << ", num2 = ";
+    num2.display();
+    cout << endl;
+
+    return 0;
+}
+
+
 
 
 
