@@ -1614,30 +1614,70 @@ int main() {
     return 0;
 }
 
+10 SEP 2026 (CLASS TEST) 
+
+Q1. Student Information System – Data Hiding and Encapsulation
+
+A software company wants to develop a student information system where a student's details must remain
+protected from unauthorized modification. Design a suitable class demonstrating data hiding, controlling
+access to class members, and defining a function outside the class. Implement at least one function as an
+inline function outside the class definition. Justify your design choice.
+
+Solution:-
 
 
 
 
 
 
+Justification:
+• Data members are private, so outside code cannot directly modify student details.
+• Public member functions provide controlled access to the private data.
+• The inline getName() function is defined outside the class using the inline keyword
+• This demonstrates encapsulation and data hiding, improving security and maintainability.
+
+
+
+Q2. Employee Class – Dynamic Resources, Constructors and Destructor
+
+Consider a class Employee containing dynamically allocated resources. Implement a class using default,
+parameterized, and copy constructors. Also explain its destructor.
+
+Solution:- 
+
+
+Explanation:
+• Dynamic allocation: name is allocated using new and released using delete[].
+• Default constructor initializes an empty/default employee.
+• Parameterized constructor initializes the object with supplied values.
+• Copy constructor performs a deep copy so that each object owns separate memory.
+• Destructor automatically releases dynamically allocated memory when the object is destroyed.
+Rule of Three: A class managing dynamic memory generally needs a destructor, copy constructor, and
+copy-assignment operator.
+
+
+Q3. BankAccount and Manager – Friend Function and Friend Class
+
+Two classes, BankAccount and Manager, need selective access to each other's private data. Implement a
+solution using a friend function and friend classes. Also explain what a friend function and friend class are.
+
+
+Solution:- 
 
 
 
 
+Friend Function:
+A friend function is a non-member function that is declared using the friend keyword inside a class. It can
+access the private and protected members of that class.
+Friend Class:
+A friend class is a class declared with the friend keyword inside another class. All member functions of the
+friend class can access the private and protected members of the granting class.
 
-
-
-
-
-
-
-
-
-
-
-
-
-
+Key points:
+• Friendship provides controlled/selective access; it does not make the classes inherit from each other.
+• Friendship is granted by the class and should be used carefully because it weakens strict encapsulation.
+• In the example, Manager is a friend of BankAccount, while showDetails() is a friend of both classes.
 
 
 
