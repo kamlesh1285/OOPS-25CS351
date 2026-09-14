@@ -1179,8 +1179,8 @@ int main() {
     return 0;
 }
 
-
-07 SEP 2026 (LAB) 
+# LAB
+07 SEP 2026 
 
 Q1:- Design a C++ Program to create a multiply class and use a parameterize constructor to multiply two numbers.
 Q2:- WAP to create a class rectangle and use parameterised constructor to evalute area of rectangle. 
@@ -1536,7 +1536,7 @@ int main() {
 
 09 SEP 2026 
 
-OBJECT AS AN ARGUMENT 
+# OBJECT AS AN ARGUMENT 
 
 def:- An object can be passed to a function just like a normal variable. Object an argument means passing an object of a clas to a function as an argument.
 Object can be passed by the value of by refrence.
@@ -1614,6 +1614,7 @@ int main() {
     return 0;
 }
 
+# CLASS TEST
 10 SEP 2026 (CLASS TEST) 
 
 Q1. Student Information System – Data Hiding and Encapsulation
@@ -1678,6 +1679,319 @@ Key points:
 • Friendship provides controlled/selective access; it does not make the classes inherit from each other.
 • Friendship is granted by the class and should be used carefully because it weakens strict encapsulation.
 • In the example, Manager is a friend of BankAccount, while showDetails() is a friend of both classes.
+
+
+
+
+11 SEP 2026
+
+# Destructor 
+
+def:- 
+* A destructor is a special member function in a class that is automatically called when an object goes out of scope or is deleted. 
+* It is used to released resources like memory, files or network connections.
+* Same name as class but with a (tiled) before it.
+* No parameters, no return type.
+
+Syntax:
+
+class Demo {
+Public:
+    Demo() {
+        //Constructor Body
+    }
+    ~Demo() {
+        // Destructor Body
+    }
+};
+
+int main() {
+    Demo d1;
+    Demo d2;
+    return 0;
+}
+
+
+* Destructor always excute in reverse order of constructor 
+    -When scope of the object finises
+    
+Q1:- WAP to create a BankAccount Class that initializes the balance using a constructor and displays a message using a destructor. 
+
+Sol:
+#include <iostream>
+#include <string>
+using namespace std;
+
+class BankAccount {
+private:
+    string accountNumber;
+    double balance;
+
+public:
+
+    BankAccount(string accNum, double initialBalance) {
+        accountNumber = accNum;
+        balance = initialBalance;
+        cout << "Constructor: Account " << accountNumber 
+             << " created with balance $" << balance << endl;
+    }
+
+    
+    ~BankAccount() {
+        cout << "Destructor: Account " << accountNumber 
+             << " closed. Final balance $" << balance << endl;
+    }
+
+   
+    void displayBalance() {
+        cout << "Current Balance: $" << balance << endl;
+    }
+};
+
+int main() {
+    cout << "--- Starting Program ---" << endl;
+
+    {
+       
+        BankAccount myAccount("ACC12345", 5000.0);
+        myAccount.displayBalance();
+    } 
+   
+
+    cout << "--- End of Program ---" << endl;
+
+    return 0;
+}
+
+Q2:- WAP to create a Car class . Use a constructor to initilized the cars model and price and a destructor to display a message  when the message is destroyed. 
+
+Sol:-
+
+#include <iostream>
+#include <string>
+using namespace std;
+
+class Car {
+private:
+    string model;
+    double price;
+
+public:
+    Car(string carModel, double carPrice) {
+        model = carModel;
+        price = carPrice;
+        cout << "Constructor: Car '" << model 
+             << "' initialized with price $" << price << endl;
+    }
+
+
+    ~Car() {
+        cout << "Destructor: Car '" << model 
+             << "' has been destroyed." << endl;
+    }
+
+
+    void displayDetails() {
+        cout << "Model: " << model << ", Price: $" << price << endl;
+    }
+};
+
+int main() {
+    cout << "--- Starting Program ---" << endl;
+
+    {
+
+        Car myCar("Tesla Model 3", 45000.0);
+        myCar.displayDetails();
+    } 
+
+
+    cout << "--- End of Program ---" << endl;
+
+    return 0;
+}
+
+# LAB 
+14 SEP 2026 
+
+
+6.2:- Develop a program to Demonstrate different types of Destructor , Behaviour in object Life Cycle Managment.
+8.1:- WAP to pass object as argument to perform operations on user defined data.
+
+SOL:- 6.2 
+
+#include <iostream>
+#include <string>
+using namespace std;
+
+// Base Class
+class Base {
+protected:
+    string name;
+
+public:
+    Base(string n) : name(n) {
+        cout << "Base Constructor: " << name << endl;
+    }
+
+    // Virtual Destructor (Important for inheritance)
+    virtual ~Base() {
+        cout << "Base Destructor: " << name << endl;
+    }
+};
+
+// Derived Class
+class Derived : public Base {
+private:
+    int* data; // Dynamically allocated memory
+
+public:
+    Derived(string n, int value) : Base(n) {
+        data = new int(value);
+        cout << "Derived Constructor: " << name << " (Data: " << *data << ")" << endl;
+    }
+
+    // Destructor to release memory
+    ~Derived() {
+        cout << "Derived Destructor: " << name << " (Releasing memory...)" << endl;
+        delete data; // Prevents memory leak
+    }
+};
+
+int main() {
+    cout << "=== Object Lifecycle Demonstration ===" << endl << endl;
+
+    // 1. Stack Object (Automatic Destruction)
+    {
+        cout << "--- Block 1: Stack Object ---" << endl;
+        Derived stackObj("StackObject", 100);
+    } 
+    // Destructor called automatically when block ends
+    cout << endl;
+
+    // 2. Heap Object (Manual Destruction)
+    {
+        cout << "--- Block 2: Heap Object ---" << endl;
+        Derived* heapObj = new Derived("HeapObject", 200);
+        delete heapObj; // Explicitly call destructor
+    }
+    cout << endl;
+
+    // 3. Array of Objects
+    {
+        cout << "--- Block 3: Array of Objects ---" << endl;
+        Derived arr[2] = {Derived("ArrayObj1", 300), Derived("ArrayObj2", 400)};
+    } 
+    // Destructors called for all array elements in reverse order
+    cout << endl;
+
+    cout << "=== End of Main ===" << endl;
+    // Remaining stack objects destroyed here
+
+    return 0;
+}
+
+SOL: 8.1 
+
+#include <iostream>
+#include <string>
+using namespace std;
+
+class Student {
+private:
+    string name;
+    int marks;
+
+public:
+    // Constructor
+    Student(string n, int m) : name(n), marks(m) {}
+
+    // Display function
+    void display() {
+        cout << "Name: " << name << ", Marks: " << marks << endl;
+    }
+
+    // Getter for marks
+    int getMarks() {
+        return marks;
+    }
+
+    // Setter for marks
+    void setMarks(int m) {
+        marks = m;
+    }
+
+    // Getter for name
+    string getName() {
+        return name;
+    }
+};
+
+// 1. Pass by Value (Creates a copy)
+void displayByValue(Student s) {
+    cout << "\n--- Pass by Value ---" << endl;
+    s.display();
+    s.setMarks(100); // Changes won't affect original object
+    cout << "Inside function (modified): ";
+    s.display();
+}
+
+// 2. Pass by Reference (Modifies original object)
+void displayByReference(Student &s) {
+    cout << "\n--- Pass by Reference ---" << endl;
+    s.display();
+    s.setMarks(100); // Changes WILL affect original object
+    cout << "Inside function (modified): ";
+    s.display();
+}
+
+// 3. Pass by Pointer
+void displayByPointer(Student *s) {
+    cout << "\n--- Pass by Pointer ---" << endl;
+    s->display();
+    s->setMarks(100); // Changes WILL affect original object
+    cout << "Inside function (modified): ";
+    s->display();
+}
+
+// 4. Function returning object
+Student createTopper() {
+    Student topper("Topper", 99);
+    return topper;
+}
+
+int main() {
+    Student s1("Alice", 85);
+
+    cout << "Original Object: ";
+    s1.display();
+
+    // Pass by Value
+    displayByValue(s1);
+    cout << "After Pass by Value: ";
+    s1.display(); // Original unchanged
+
+    // Pass by Reference
+    displayByReference(s1);
+    cout << "After Pass by Reference: ";
+    s1.display(); // Original modified
+
+    // Pass by Pointer
+    displayByPointer(&s1);
+    cout << "After Pass by Pointer: ";
+    s1.display(); // Original modified
+
+    // Function returning object
+    Student s2 = createTopper();
+    cout << "\nReturned Object: ";
+    s2.display();
+
+    return 0;
+}
+
+
+
+
 
 
 
